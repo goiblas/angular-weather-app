@@ -1,1 +1,117 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  [tabindex="-1"] {
+      outline: 0;
+  }
+  /* LAYOUT
+    **********************************************/
+  
+  .grid {
+    width: 94%;
+    max-width: 1540px;
+    margin: auto;
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: auto minmax(30%, 300px);
+    grid-template-rows: 30vh auto;
+    grid-gap: 5vw;
+    grid-template-areas: "search search" "main main" "week week";
+  }
+  
+  .cell-main-result {
+    grid-area: main;
+  }
+  
+  .cell-week-result {
+    grid-area: week;
+  }
+  
+  .cell-search {
+    grid-area: search;
+  }
+  
+  @media( min-width: 640px) {
+    .grid {
+      grid-template-areas: "search week" "main week";
+    }
+  }
+  
+  /* app forecast weekly */
+  
+  app-forecast-weekly {
+    height: 100%;
+    display: block;
+  }
+  
+  ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  li {
+    flex-grow: 1;
+    display: flex;
+  }
+  
+  li:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, .8);
+  }
+  
+  .ListForescast-item {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  h2 {
+    /*mask-image: linear-gradient(-45deg,
+                            rgba(0,0,0,1) 20%, rgba(0,0,0,0) 90%);
+      background-color: turquoise;
+      color: #fff;*/
+  }
+   
+  body {
+    background-color: #253248; 
+    color: #fff;
+    font-family: 'Encode Sans Semi Expanded', sans-serif;
+  }
+  
+
+
+
+  // Loading
+  .cell-main-result,
+  .cell-week-result {
+    transition: all .3s;
+  }
+  .loading {
+    .cell-main-result {
+        opacity: .4;
+        transform: scale(.8);
+    }
+    .cell-week-result {
+        opacity: .4;
+        transform: scale(.8);
+      }
+  }

@@ -1,0 +1,17 @@
+
+
+<div tabindex="-1" #main>
+  <article *ngIf="hasInformation">
+      <div style="font-size: 50px;">{{detailedWeatherSelected.icon.src}} </div>
+      <h2>{{detailedWeatherSelected.temperature}}</h2>
+      <ul>
+        <li>Viento: {{detailedWeatherSelected.wind}}</li>
+        <li>Precipitaciones: {{detailedWeatherSelected.rain}} mmm/3h</li>
+        <li *ngIf="detailedWeatherSelected.snow > 0">{{detailedWeatherSelected.snow}}</li>
+      </ul>
+      
+      <select (change)="onChangeSelect($event)">
+        <option *ngFor="let hour of hours; let i = index" [value]="i">{{hour}}</option>
+      </select>
+  </article>
+</div>

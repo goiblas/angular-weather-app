@@ -1,0 +1,17 @@
+<div *ngIf="hasInformation">
+    <ul>
+      <li *ngFor="let weather of weeklyWeather">
+        <div class="WeeklyWeather">
+          <span class="WeeklyWeather-weekday">
+              {{weather.date | getWeekday}} 
+          </span>
+          <span class="WeeklyWeather-icon">
+            {{weather.icon.src}}
+          </span>
+          <span class="WeeklyWeather-temperature">
+            {{weather.temperature}} º
+          </span>
+        </div>
+      </li>
+    </ul>
+</div>
