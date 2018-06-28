@@ -14,6 +14,8 @@ import { SearchComponent } from './components/search/search.component';
 import { ForecastMainComponent } from './components/forecast-main/forecast-main.component';
 import { ForecastWeeklyComponent } from './components/forecast-weekly/forecast-weekly.component';
 import { GetWeekdayPipe } from './utils/get-weekday.pipe';
+import { IconPipe } from './utils/icon.pipe';
+import { RainPipe } from './utils/rain.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { GetWeekdayPipe } from './utils/get-weekday.pipe';
     SearchComponent,
     ForecastMainComponent,
     ForecastWeeklyComponent,
-    GetWeekdayPipe
+    GetWeekdayPipe,
+    IconPipe,
+    RainPipe
   ],
   imports: [
     BrowserModule,

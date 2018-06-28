@@ -1,62 +1,92 @@
+@import '../../../settings';
+/* Personalización del buscador de google places
+    **********************************************/
+
 .pac-icon {
-    display: none;
+  display: none;
 }
+
 .pac-item {
-    padding: .3rem .8rem;
+  padding: .3rem .8rem;
 }
+
 .pac-logo::after {
-    display: none;
+  display: none;
 }
 
-.container {
-    padding: 10vh 2rem;
-}
-.InputSearch {
-    padding: .8rem .1rem;
-    width: 100%;
-    box-sizing: border-box;
-    max-width: 420px;
-    border: 0;
+.pac-container {
+  background-color: #fff;
+  font-family: 'Encode Sans Semi Expanded', sans-serif;
+  font-size: 1.12rem;
 }
 
-
- /* custom */
- .pac-container {
-    background-color: #fff;
-    font-family: 'Encode Sans Semi Expanded', sans-serif;
-    font-size: 110%;
+.pac-container {
+  box-shadow: rgba(0, 0, 0, 0.5) 0 25px 25px -5px;
 }
- .pac-container {
-   box-shadow: rgba(0, 0, 0, 0.5) 0 25px 25px -5px;
- }
+
+/* Componentes
+    **********************************************/
+
+.InputSearch-wrapper {
+  padding: 10vh 2rem;
+}
 
 .InputSearch {
+  padding: .8rem .08rem;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 420px;
   background-color: rgba(0, 0, 0, 0);
   font-size: 1.8rem;
   width: 100%;
-  max-width: 28.75rem;
+  max-width: 29.75rem;
   color: #fff;
   font-family: inherit;
   font-weight: 300;
   transition: border-color .15s;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0);
-}
-.InputSearch:focus {
-  outline: 0;
-  border-bottom-color: rgba(255, 255, 255, 0.85);
+  margin-bottom: .98rem;
+  border: 0;
+  border-bottom: 1px solid $c-line;
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+  }
+  &:focus {
+    outline: 0;
+    border-bottom-color: rgba(255, 255, 255, 0.9);
+  }
 }
 
-/* transtion */
-.container {
+.Today {
+  font-size: .93rem;
+  letter-spacing: .05rem;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+/* Transición cuango tengo la ubicación seleccionada 
+    **********************************************/
+
+.InputSearch-wrapper {
   transform: translate(0, 40vh);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.placeSelected.container{
-  transform: translate(0, 0);
+
+.Today {
+  transition: opacity 2s;
 }
-@media(min-width: 42em) {
-  .container {
+
+@media(min-width: $breakpoint) {
+  .InputSearch-wrapper {
     transform: translate(10vw, 42vh);
+  }
+}
+
+.placeSelected {
+  &.InputSearch-wrapper {
+    transform: translate(0, 0);
+  }
+  .Today {
+    opacity: .4;
   }
 }

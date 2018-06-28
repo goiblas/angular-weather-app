@@ -1,10 +1,12 @@
-import { Component, OnInit, Input, OnChanges, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ElementRef, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { DetailedWeather } from '../../models/weather';
 
 @Component({
   selector: 'app-forecast-main',
   templateUrl: './forecast-main.component.html',
-  styleUrls: ['./forecast-main.component.scss']
+  styleUrls: ['./forecast-main.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForecastMainComponent implements OnInit, OnChanges {
   @Input() detailedWeather: DetailedWeather[];
@@ -13,7 +15,9 @@ export class ForecastMainComponent implements OnInit, OnChanges {
   detailedWeatherSelected: DetailedWeather | null = null;
   hours = [];
   constructor() { }
-
+  get hasInformation(): boolean {
+    return this.detailedWeather && this.detailedWeather.length > 0;
+  }
   ngOnInit() {
   }
 
@@ -28,10 +32,7 @@ export class ForecastMainComponent implements OnInit, OnChanges {
   }
 
   onChangeSelect(ev) {
-    console.log(ev.target.value);
     this.detailedWeatherSelected = this.detailedWeather[ev.target.value];
   }
-  get hasInformation(): boolean {
-    return this.detailedWeather && this.detailedWeather.length > 0;
-  }
+
 }

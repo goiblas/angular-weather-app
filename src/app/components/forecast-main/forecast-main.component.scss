@@ -1,0 +1,13 @@
+@import '../../../settings';
+/* Componentes
+    **********************************************/
+
+.MainWeather {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+
+    &-icon {
+        
+    }
+}

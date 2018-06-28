@@ -1,17 +1,29 @@
 
 
+
+<!-- añado el tabindex para hacerle focus cuando obtengo los datos -->
 <div tabindex="-1" #main>
-  <article *ngIf="hasInformation">
-      <div style="font-size: 50px;">{{detailedWeatherSelected.icon.src}} </div>
-      <h2>{{detailedWeatherSelected.temperature}}</h2>
-      <ul>
-        <li>Viento: {{detailedWeatherSelected.wind}}</li>
-        <li>Precipitaciones: {{detailedWeatherSelected.rain}} mmm/3h</li>
-        <li *ngIf="detailedWeatherSelected.snow > 0">{{detailedWeatherSelected.snow}}</li>
+  <!-- aria-live: el lector de pantalla leerá el contenido cuando cambie -->
+  <article *ngIf="hasInformation" aria-live="polite" class="MainWeather">
+      <div class="MainWeather-icon">
+        <!-- TODO: Traducir el texto alternativo de la imagen -->
+       <img [src]="detailedWeatherSelected.icon.src | icon" 
+        [alt]="detailedWeatherSelected.icon.description"
+        lang="en">
+       </div>
+      
+      <div class="MainWeather-temperature u-temperature" aria-label="Temperature">{{detailedWeatherSelected.temperature.toFixed(0)}} º</div>
+      <ul class="MainWeather-listDetails">
+        <!-- utilizo espacios indivisibles para que nunca estés en diferente linea -->
+        <li>Viento: {{detailedWeatherSelected.wind}}&nbsp;k/h</li>
+        <li>Precipitaciones: {{detailedWeatherSelected.rain | rain}}&nbsp;mm/h</li>
+        <li *ngIf="detailedWeatherSelected.snow > 0">{{detailedWeatherSelected.snow | rain}}&nbsp;mm/h</li>
       </ul>
       
-      <select (change)="onChangeSelect($event)">
-        <option *ngFor="let hour of hours; let i = index" [value]="i">{{hour}}</option>
-      </select>
+      <div class="MainWeather-select">
+        <select (change)="onChangeSelect($event)">
+          <option *ngFor="let hour of hours; let i = index" [value]="i">{{hour}}</option>
+        </select>
+      </div>
   </article>
 </div>
