@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  placesApiKey: 'AIzaSyBTyJL26P1Aarm2NA0dGnThjH2tJiOmtwo',
+  language: 'es'
 };

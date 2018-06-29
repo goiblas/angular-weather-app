@@ -3,7 +3,6 @@
   <div class="loader">Cargando...</div>
 </div>
 
-
 <div class="grid" [ngClass]="{loading: service.loading | async}">
   <div class="cell-search">
     <app-search (coords)="onSetCoords($event)"></app-search>
