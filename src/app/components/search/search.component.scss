@@ -35,9 +35,8 @@
   padding: .8rem .08rem;
   width: 100%;
   box-sizing: border-box;
-  max-width: 420px;
   background-color: rgba(0, 0, 0, 0);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   width: 100%;
   max-width: 29.75rem;
   color: #fff;
@@ -53,6 +52,9 @@
   &:focus {
     outline: 0;
     border-bottom-color: rgba(255, 255, 255, 0.9);
+  }
+  @media(min-width: $breakpoint) {
+    font-size: 1.8rem;
   }
 }
 
@@ -86,7 +88,14 @@
   &.InputSearch-wrapper {
     transform: translate(0, 0);
   }
+  .InputSearch {
+    border-bottom-color: rgba(255, 255, 255, 0.0);
+    @media(min-width: $breakpoint) {
+      font-size: 2.34rem;
+    }
+  }
   .Today {
     opacity: .4;
+    transform: translateY(-100%);
   }
 }

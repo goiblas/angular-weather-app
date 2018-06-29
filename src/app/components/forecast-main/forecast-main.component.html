@@ -12,12 +12,21 @@
         lang="en">
        </div>
       
-      <div class="MainWeather-temperature u-temperature" aria-label="Temperature">{{detailedWeatherSelected.temperature.toFixed(0)}} º</div>
+      <div class="MainWeather-temperature u-temperature" aria-label="Temperature">{{detailedWeatherSelected.temperature.toFixed(0)}}&nbsp;º</div>
       <ul class="MainWeather-listDetails">
         <!-- utilizo espacios indivisibles para que nunca estés en diferente linea -->
-        <li>Viento: {{detailedWeatherSelected.wind}}&nbsp;k/h</li>
-        <li>Precipitaciones: {{detailedWeatherSelected.rain | rain}}&nbsp;mm/h</li>
-        <li *ngIf="detailedWeatherSelected.snow > 0">{{detailedWeatherSelected.snow | rain}}&nbsp;mm/h</li>
+        <li class="DetailsRow">
+          <span class="DetailRow-label">Viento:</span> 
+          <span class="DetailRow-value"> {{detailedWeatherSelected.wind}}&nbsp;k/h</span>
+        </li>
+        <li class="DetailsRow">
+          <span class="DetailRow-label">Precipitaciones:</span> 
+          <span class="DetailRow-value"> {{detailedWeatherSelected.rain}}&nbsp;mm/h</span>
+        </li>
+        <li class="DetailsRow" *ngIf="detailedWeatherSelected.snow > 0">
+          <span class="DetailRow-label">Nieve:</span> 
+          <span class="DetailRow-value"> {{detailedWeatherSelected.snow}}&nbsp;mm/h</span>
+        </li>
       </ul>
       
       <div class="MainWeather-select">

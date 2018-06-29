@@ -31,8 +31,43 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+
+.loader {
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  margin: auto;
+  margin: auto;
+  position: relative;
+  text-indent: -100vw;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+  animation: rotation .45s infinite linear;
+}
+.u-fullPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+} 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+  </style>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+      <div class="u-fullPage">
+          <div class="loader">Cargando...</div>
+        </div>
+  </app-root>
 </body>
 </html>

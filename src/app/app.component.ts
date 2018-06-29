@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 detailedWeather$: Observable<DetailedWeather[]>;
 weeklyWeather$: Observable<WeeklyWeather[]>;
 
-  constructor(private service: WeatherService) {}
+  constructor(public service: WeatherService) {}
 
   ngOnInit() {
     this.detailedWeather$ = this.service.getMainWeather();
