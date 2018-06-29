@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>App Weather con Angular</title>
+
+  <link rel="preconnet" href="api.openweathermap.org">
+  <link rel="preconnet" href="fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Expanded:300,400,700" rel="stylesheet">
+
+  <!-- Cuando termine de cargar la aplicación descargá los assets que necesitará en el futuro  -->
+  <link rel="prefetch" href="assets/icons/01d.svg">
+  <link rel="prefetch" href="assets/icons/01n.svg">
+  <link rel="prefetch" href="assets/icons/02d.svg">
+  <link rel="prefetch" href="assets/icons/02n.svg">
+  <link rel="prefetch" href="assets/icons/03d.svg">
+  <link rel="prefetch" href="assets/icons/03n.svg">
+  <link rel="prefetch" href="assets/icons/04d.svg">
+  <link rel="prefetch" href="assets/icons/04n.svg">
+  <link rel="prefetch" href="assets/icons/09d.svg">
+  <link rel="prefetch" href="assets/icons/09n.svg">
+  <link rel="prefetch" href="assets/icons/10d.svg">
+  <link rel="prefetch" href="assets/icons/10n.svg">
+  <link rel="prefetch" href="assets/icons/11d.svg">
+  <link rel="prefetch" href="assets/icons/11n.svg">
+  <link rel="prefetch" href="assets/icons/13d.svg">
+  <link rel="prefetch" href="assets/icons/13n.svg">
+  <link rel="prefetch" href="assets/icons/50d.svg">
+  <link rel="prefetch" href="assets/icons/50n.svg">
+  <base href="/angular-weather-app/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+
+.loader {
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  margin: auto;
+  margin: auto;
+  position: relative;
+  text-indent: -100vw;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+  animation: rotation .45s infinite linear;
+}
+.u-fullPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+} 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+  </style>
+<link rel="stylesheet" href="styles.3ac0080bc4fb53b67fe5.css"></head>
+<body>
+  <app-root>
+      <div class="u-fullPage">
+          <div class="loader">Cargando...</div>
+        </div>
+  </app-root>
+<script type="text/javascript" src="runtime.a66f828dca56eeb90e02.js"></script><script type="text/javascript" src="polyfills.2f4a59095805af02bd79.js"></script><script type="text/javascript" src="main.16fed16af71787e4de75.js"></script></body>
+</html>
