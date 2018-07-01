@@ -67,7 +67,7 @@ export class WeatherService {
     }
 
     // Constantes
-    const NUMBER_OF_HOURS = 8;
+    const NUMBER_OF_HOURS = 7;
     const MIDDAY = '12:00';
     const TODAY = new Date().getUTCDate();
 
@@ -94,8 +94,8 @@ export class WeatherService {
             src: weather.weather[0].icon
           },
           wind: weather.wind.speed,
-          rain: weather.rain ? weather.rain['3h'] : 0,
-          snow: weather.snow ? weather.snow['3h'] : 0
+          rain: weather.rain && weather.rain['3h'] ? weather.rain['3h'] : 0,
+          snow: weather.snow && weather.snow['3h'] ? weather.snow['3h'] : 0
         };
 
         // Añado el pronostico a array detallado

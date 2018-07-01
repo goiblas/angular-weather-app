@@ -29,10 +29,22 @@
         </li>
       </ul>
       
-      <div class="MainWeather-select">
-        <select (change)="onChangeSelect($event)">
-          <option *ngFor="let hour of hours; let i = index" [value]="i">{{hour}}</option>
-        </select>
+      <div class="MainWeather-select" [ngClass]="{'u-maskLeft':maskLeft , 'u-maskRight': maskRight }">
+
+        <!-- Agrupo los inputs del selector de horas para facilitar el uso de lectores de pantalla -->
+        <fieldset>
+          <!-- Texto solo visible para lectores de pantalla -->
+          <legend class="u-sreenReaderOnly">Tiempo según la hora del día seleccionada</legend>
+          <div class="DragSelector" scrollbarHidden="true" (reachesRightBound)="maskRight = $event" (reachesLeftBound)="maskLeft = $event" dragScroll>
+            <div class="DragSelector-item" *ngFor="let hour of hours; let i = index">
+              <input class="DragSelector-input u-sreenReaderOnly" type="radio" name="hours" [value]="i" [checked]="i === 0" [id]="'hour' + i" (click)="onChangeSelect(i)">
+              <label class="Hour" [for]="'hour' + i">
+                <span class="Hour-txt"> {{hour}} </span>
+                <span class="Hour-day"> {{isToday(hour) ? 'Hoy': 'Mañana'}} </span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
       </div>
   </article>
 </div>

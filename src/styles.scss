@@ -28,7 +28,11 @@ ul, li {
     padding: 0;
     list-style: none;
 }
-
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
 
 
 /* UTILS
@@ -41,12 +45,20 @@ ul, li {
     letter-spacing: 0.06em;
     word-spacing: -.2em;
 }
+.u-sreenReaderOnly {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
 
 /* LAYOUT
     **********************************************/
 
 .grid {
-  width: 94%;
+  width: 100%;
   max-width: 1540px;
   margin: auto;
   display: grid;
@@ -72,6 +84,7 @@ ul, li {
 @media( min-width: $breakpoint) {
   .grid {
     grid-template-areas: "search week" "main week";
+    width: 94%;
   }
 }
 
@@ -86,14 +99,6 @@ app-forecast-weekly {
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-
-
-h2 {
-  /*mask-image: linear-gradient(-45deg,
-                            rgba(0,0,0,1) 20%, rgba(0,0,0,0) 90%);
-      background-color: turquoise;
-      color: #fff;*/
 }
 
 body {

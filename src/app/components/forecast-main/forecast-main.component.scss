@@ -4,20 +4,23 @@
 
 .MainWeather {
     display: grid;
-    grid-template-columns: auto 60%;
+    grid-template-columns: auto 56%;
     grid-gap: 1rem;
-    max-width: 82vw;
     margin: auto;
     margin-bottom: 6vh;
 
     &-icon {
         grid-row: 1 / span 2;
         align-self: center;
+        padding-left: 1rem;
         img {
             width: 100%;
             max-width: 280px;
             height: auto;
         }
+    }
+    &-listDetails {
+        padding: 0 2rem 1.2rem 0;
     }
     &-temperature {
         font-size: 3.2rem;
@@ -30,7 +33,6 @@
     &-select {
         grid-column:1 / span 2;
         text-align: center;
-        padding: 1rem 0;
         select {
             width: 80%;
             max-width: 320px;
@@ -52,9 +54,64 @@
     justify-content: space-between;
     font-size: .8rem;
     padding: .3rem 0;
-    max-width: 200px;
+    max-width: 13rem;
 
     &-label {
         color: rgba(255, 255, 255, .5);
     }
+}
+
+
+.DragSelector {
+    display: flex;
+    overflow: auto;
+    width: 100%;
+    user-select: none;
+    &-item {
+        text-align: center;
+        flex: 1 0 5rem;
+        @media (min-width: $breakpoint) {
+            flex: 1 0 7.5rem;
+        }
+    }
+    &-input {
+        & + label {
+            padding: 1rem 0 1.3rem;
+            box-shadow: inset rgba(255, 255, 255, 1) 0 0px;
+            transition: box-shadow .3s;
+            display: block;
+            cursor: ew-resize;
+        }
+        &:checked + label {
+            box-shadow: inset rgba(255, 255, 255, 1) 0 4px;
+        }
+    }
+}
+
+
+.Hour {
+    > span {
+        display: block;
+    }
+    &-txt {
+        padding: .32rem 0;
+        letter-spacing: .05rem;
+    }
+    &-day {
+        font-size: .65rem;
+        opacity: .4;
+    }
+}
+
+
+
+// efecto de desvanicimiento del slider de horas
+.MainWeather-select {
+    mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+}
+.u-maskRight {
+    mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%);
+}
+.u-maskLeft {
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
 }
