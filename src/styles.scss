@@ -1,8 +1,7 @@
 @import 'settings';
-
-
 /* Reset
     **********************************************/
+
 html {
   box-sizing: border-box;
 }
@@ -20,38 +19,53 @@ body {
 [tabindex="-1"] {
   outline: 0;
 }
+
 img {
-    vertical-align: middle;
+  vertical-align: middle;
 }
-ul, li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
 fieldset {
   border: 0;
   padding: 0;
   margin: 0;
 }
 
+/* BASE
+    **********************************************/
+
+body {
+  background-color: #253248;
+  color: #fff;
+  font-family: 'Encode Sans Semi Expanded', sans-serif;
+}
 
 /* UTILS
     **********************************************/
+
 .u-text-light {
-    font-weight: 300;
+  font-weight: 300;
 }
+
 .u-temperature {
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    word-spacing: -.2em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  word-spacing: -.2em;
 }
+
 .u-sreenReaderOnly {
-  position:absolute;
-  left:-10000px;
-  top:auto;
-  width:1px;
-  height:1px;
-  overflow:hidden;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 /* LAYOUT
@@ -88,26 +102,9 @@ fieldset {
   }
 }
 
-/* app forecast weekly */
-app-forecast-weekly {
-  height: 100%;
-  display: block;
-}
 
-.ListForescast-item {
-  margin: auto;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-body {
-  background-color: #253248;
-  color: #fff;
-  font-family: 'Encode Sans Semi Expanded', sans-serif;
-} 
-
-// Loading
+/* LOADING
+    **********************************************/
 .cell-main-result,
 .cell-week-result {
   transition: all .3s;
@@ -122,4 +119,23 @@ body {
     opacity: .4;
     transform: scale(.8);
   }
+}
+
+
+/* BACKGROUND IMAGES
+    **********************************************/
+
+// aparecerá encima del contenido con la opacidad baja dando textura al contenido
+// no interfiere con los clicks del usuario gracias a pointer event
+.WrapperBgImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: .2;
+  pointer-events: none;
 }

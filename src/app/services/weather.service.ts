@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ProxyApiService } from './proxy-api.service';
 import { Coords } from '../models/coords';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { take, map } from 'rxjs/operators';
+import { take, map, delay } from 'rxjs/operators';
 import { GroupWeather, DetailedWeather, WeeklyWeather } from '../models/weather';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class WeatherService {
   private detailedWeather$ = new Subject<DetailedWeather[]>();
   private weeklyWeather$ = new Subject<WeeklyWeather[]>();
   private loading$ = new BehaviorSubject<boolean>(false);
-
+  private weatherDescription$ = new Subject<string[]>();
   constructor( private proxyApi: ProxyApiService) { }
 /**
  * @returns Observable
@@ -26,6 +26,10 @@ export class WeatherService {
   }
   getWeeklyWeather(): Observable <WeeklyWeather[]> {
     return this.weeklyWeather$.asObservable();
+  }
+  getWeatherDescription(): Observable <string[]> {
+    // añado un retraso para que cambie despues de cambiar el resultado
+    return this.weatherDescription$.asObservable().pipe(delay(1200));
   }
 
   /**
@@ -44,7 +48,8 @@ export class WeatherService {
       take(1),
 
       // Estructura la respuesta del servidor
-      map(this.arrangeWeatherResponse)
+      map(this.arrangeWeatherResponse),
+      map(this.getWeatherDescriptionOfResponse.bind(this))
     ).subscribe( ({ listDetailedWeather, listWeeklyWeather}: GroupWeather)  => {
 
       // Lanzo el nuevo estado de los observables
@@ -73,7 +78,6 @@ export class WeatherService {
 
     const listDetailedWeather: DetailedWeather[] = [];
     const listWeeklyWeather: WeeklyWeather[]  = [];
-
 
     // recorro la lista de resultado
     for ( let i = 0; i < response.list.length; i++ ) {
@@ -123,4 +127,15 @@ export class WeatherService {
     return { listDetailedWeather , listWeeklyWeather };
   }
 
+  private getWeatherDescriptionOfResponse(response: GroupWeather ): GroupWeather {
+    // captura la descripción del resultado principal
+    const descriptionMainWeather = response.listDetailedWeather[0].icon.description;
+    // la transforma en un array de palabras
+    const keyWordsDescription = descriptionMainWeather.split(' ');
+    // lanzo el nuevo estado de la descripción del tiempo
+    this.weatherDescription$.next(keyWordsDescription);
+
+    // Devuelvo la misma respuesta
+    return response;
+  }
 }
